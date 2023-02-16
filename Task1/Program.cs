@@ -12,14 +12,19 @@ int Prompt(string message)
     
 }
 
+bool Validator(int userValue)
+{
+    if(userValue>99 && userValue<1000)
+    {
+        return true;
+    }
+    System.Console.WriteLine("You number is not three didgital number");
+    return false;    
+}
+
 int value = Prompt("Enter your value");
 
-if (value/1000 == 0 && value/100!= 0) 
+if (Validator(value)) 
     {
         System.Console.WriteLine($"2nd number in you value is {value/10 % 10}");
     }
-else
-    {
-        System.Console.WriteLine("You number is not three didgit number");        
-    }   
- 
