@@ -6,7 +6,7 @@
 
 // 32679 -> 6
 
-int thirdDigit, userValue, N;
+int Value, Position;
 
 int Prompt(string message)
 {
@@ -14,13 +14,13 @@ int Prompt(string message)
     return Convert.ToInt32(Console.ReadLine());      
 }
 
-bool Validator(int userValue)
+bool Validator(int userValue, int digitPosition)
 {
-    if (userValue >99)
+    if (userValue > (Convert.ToInt32(Math.Pow(10,(digitPosition-1))-1)))
     {
         return true;
-    } 
-    System.Console.WriteLine("no 3rd digit in your value ");
+    }
+    System.Console.WriteLine($"no {digitPosition} digit in your value ");
     return false;
 }
 
@@ -35,12 +35,18 @@ int digitsAmount(int userValue)
     return digitCounter;    
 }
 
-userValue = Prompt("Enter your value");
-N = digitsAmount(userValue);
-
-if  (Validator(userValue))
+int findDigit(int userValue, int digitPosition)
 {
-    thirdDigit = (userValue/Convert.ToInt32(Math.Pow(10,(N-3))))%10;
-    System.Console.WriteLine($"3rd digit in your value is {thirdDigit}");       
+    int N = digitsAmount(userValue);
+    return (userValue/Convert.ToInt32(Math.Pow(10,(N-digitPosition))))%10;
+}
+
+Value = Prompt("Enter your value");
+Position = Prompt("Enetr digit position");
+
+
+if  (Validator(Value, Position))
+{
+    System.Console.WriteLine($"{Position} digit in your value is {findDigit(Value, Position)}");       
 }
 
