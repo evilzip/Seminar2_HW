@@ -6,7 +6,7 @@
 
 // 32679 -> 6
 
-int Value, Position;
+int Value, Position; //Positin - пользователь вводит какую по счету цифру в его числе нужно вывести. По условию задачи это 3. Но я решил в общем виде
 
 int Prompt(string message)
 {
@@ -14,7 +14,7 @@ int Prompt(string message)
     return Convert.ToInt32(Console.ReadLine());      
 }
 
-bool Validator(int userValue, int digitPosition)
+bool Validator(int userValue, int digitPosition) //проверка выходит ли номер искомой позиции за пределы введенного числа
 {
     if (userValue > (Convert.ToInt32(Math.Pow(10,(digitPosition-1))-1)))
     {
@@ -24,7 +24,7 @@ bool Validator(int userValue, int digitPosition)
     return false;
 }
 
-int digitsAmount(int userValue)
+int digitsAmount(int userValue) // поиск количества цифр в числе
 {
     int digitCounter = 0;
     while (userValue > 0)
@@ -35,10 +35,10 @@ int digitsAmount(int userValue)
     return digitCounter;    
 }
 
-int findDigit(int userValue, int digitPosition)
+int findDigit(int userValue, int digitPosition) // какая цифра стоит на digitPosition в числе userValue
 {
-    int N = digitsAmount(userValue);
-    return (userValue/Convert.ToInt32(Math.Pow(10,(N-digitPosition))))%10;
+       int N = digitsAmount(userValue);
+       return (userValue/Convert.ToInt32(Math.Pow(10,(N-digitPosition))))%10;
 }
 
 Value = Prompt("Enter your value");
